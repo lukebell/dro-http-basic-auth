@@ -1,5 +1,5 @@
 var cfg = require("../../lib/plugin.js").cfg;
-var express = require('express');
+var auth = require('basic-auth');
 
 /**
  * http-basic-auth plugin for Dromedary library.
@@ -11,11 +11,15 @@ var express = require('express');
 function plugin(req, res, cb) {
     console.log("->dro-http-basic-auth   ");
     var _ = cfg(req);
-    var auth;
-    if(_['basic-auth'] && _['basic-auth'].user && _['basic-auth'].pass) {
-        auth = express.basicAuth(_['basic-auth'].user, _['basic-auth'].pass);
+    var user = auth(req);
+    if (_['basicAuth'] && _['basicAuth'].user && _['basicAauth'].pass && _['basicAuth'].user.name === user &&
+        _['basicAauth'].pass === user.pass) {
+        cb();
+    } else {
+        res.set({
+            'WWW-Authenticate': 'Basic realm=Authorization Required'
+        }).send(401);
     }
-    cb();
 }
 
 /**
