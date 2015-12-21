@@ -1,6 +1,6 @@
 {
   "name": "dro-http-basic-auth",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Dromedary plugin for http basic authentication",
   "main": "dro-http-basic-auth.js",
   "scripts": {

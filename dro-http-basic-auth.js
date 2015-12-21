@@ -14,9 +14,9 @@ function plugin(req, res, cb) {
     var user = auth(req);
     if (_['basicAuth'] && _['basicAuth'].user && _['basicAauth'].pass && _['basicAuth'].user === user.name &&
         _['basicAauth'].pass === user.pass) {
-        cb();
+        return cb();
     } else {
-        res.set({
+        return res.set({
             'WWW-Authenticate': 'Basic realm=Authorization Required'
         }).send(401);
     }
