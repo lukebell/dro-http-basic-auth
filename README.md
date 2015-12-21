@@ -1,0 +1,1 @@
+Dromedary plugin to add basic authentication
