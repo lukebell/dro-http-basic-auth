@@ -12,7 +12,7 @@ function plugin(req, res, cb) {
     console.log("->dro-http-basic-auth   ");
     var _ = cfg(req);
     var user = auth(req);
-    if (_['basicAuth'] && _['basicAuth'].user && _['basicAauth'].pass && _['basicAuth'].user.name === user &&
+    if (_['basicAuth'] && _['basicAuth'].user && _['basicAauth'].pass && _['basicAuth'].user === user.name &&
         _['basicAauth'].pass === user.pass) {
         cb();
     } else {
